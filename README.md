@@ -22,7 +22,7 @@ Application of the Holy Quran book of Muslims, developed using Flutter & Dart.
 🔜 Search for Ayah (comming soon)
 
 ## 📁 Download for Android
-[CLICK HERE](link) to download.
+[CLICK HERE](https://raw.githubusercontent.com/aymendn/the-holy-quran-app-flutter/main/the-holy-quran-app.apk) to download.
 
 ## ⚙ Installation steps
 
@@ -55,9 +55,9 @@ If you liked the repo then kindly support it by giving it a star ⭐!
 
 ## 🤝 Contribution
 
-- [fork my repository](https://github.com/user/repository/fork)
+- [fork my repository](https://github.com/aymendn/the-holy-quran-app-flutter/fork)
 
-- [create issue](https://github.com/user/repository/issues/new)
+- [create issue](https://github.com/aymendn/the-holy-quran-app-flutter/issues/new)
 
 
 
