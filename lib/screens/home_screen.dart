@@ -31,25 +31,25 @@ class HomeScreen extends StatelessWidget {
       child: GestureDetector(
         onTap: overlay.toggleisShowOverlay,
         child: Scaffold(
-          backgroundColor:
-              isLandscape && size.width > 500 ? colorScheme.scaffoldBg : null,
+          // backgroundColor:
+          //     isLandscape && size.width > 500 ? colorScheme.scaffoldBg : null,
           body: Center(
             child: Stack(
               alignment: Alignment.center,
               children: [
                 Container(
-                  decoration: isLandscape && size.width > 500
-                      ? BoxDecoration(
-                          border: Border.symmetric(
-                            vertical: BorderSide(
-                              color: colorScheme.infoText,
-                              width: 2,
-                            ),
-                          ),
-                          color: colorScheme.scaffold,
-                        )
-                      : null,
-                  constraints: const BoxConstraints(maxWidth: 500),
+                  // decoration: isLandscape && size.width > 500
+                  //     ? BoxDecoration(
+                  //         border: Border.symmetric(
+                  //           vertical: BorderSide(
+                  //             color: colorScheme.infoText,
+                  //             width: 1,
+                  //           ),
+                  //         ),
+                  //         color: colorScheme.scaffold,
+                  //       )
+                  //     : null,
+                  // constraints: const BoxConstraints(maxWidth: 500),
                   child: CarouselSlider.builder(
                     carouselController: quran.carouselController,
                     options: CarouselOptions(
