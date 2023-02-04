@@ -13,13 +13,16 @@ class InfoOverlay extends StatelessWidget {
 
     return Column(
       mainAxisAlignment:
-          isLandscape ? MainAxisAlignment.end : MainAxisAlignment.spaceBetween,
+          // isLandscape ?
+          MainAxisAlignment.end,
+
+      //  : MainAxisAlignment.spaceBetween,
       children: isLandscape
           ? [
               const LandscapeOverlay(),
             ]
           : const [
-              TopOverlay(),
+              // TopOverlay(),
               BottomOverlay(),
             ],
     );

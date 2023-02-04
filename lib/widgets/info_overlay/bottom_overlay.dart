@@ -25,7 +25,7 @@ class BottomOverlay extends StatelessWidget {
     final overlay = Provider.of<ShowOverlayProvider>(context, listen: false);
 
     void _goToBookMark() {
-      quran.goToPage(bookMark.markPage);
+      quran.goToPage(bookMark.markPage - 1);
       overlay.toggleisShowOverlay();
     }
 

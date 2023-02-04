@@ -64,11 +64,13 @@ class HomeScreen extends StatelessWidget {
                     itemCount: quranPages.length,
                     itemBuilder: (_, pageIndex, __) {
                       return isLandscape || isKeyboardOpen
-                          ? ListView(
-                              children: [
-                                const SimplePageInfo(),
-                                QuranPage(pageIndex: pageIndex),
-                              ],
+                          ? SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  const SimplePageInfo(),
+                                  QuranPage(pageIndex: pageIndex),
+                                ],
+                              ),
                             )
                           : Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
