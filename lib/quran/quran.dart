@@ -66,7 +66,7 @@ String getPlaceOfRevelationByPage(page) {
 }
 
 int getSurahFirstPage(int surahNumber) {
-  return quranPages.indexWhere((page) => page.surah == surahNumber) + 1;
+  return surah[surahNumber - 1]['page'] as int;
 }
 
 int getHizbQuarter({required int hizb, required int quarter}) {
@@ -91,7 +91,7 @@ int getHizbPage(int hizb) {
 
 String pageDir(int number) {
   // return 'assets/quran-images/page${formattedPageNumber(number)}.png';
-  return 'assets/output/${formattedPageNumber(number)}.svg';
+  return 'assets/svg/SVG-$number.svg';
 }
 
 String formattedPageNumber(int number) {

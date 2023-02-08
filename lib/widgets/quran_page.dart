@@ -6,9 +6,13 @@ import '../quran/quran.dart';
 import 'invert_color.dart';
 
 class QuranPage extends StatelessWidget {
-  const QuranPage({Key? key, required this.pageIndex}) : super(key: key);
+  QuranPage({Key? key, required this.pageIndex}) : super(key: key);
 
   final int pageIndex;
+  double colorGreen = Colors.blue.green.toDouble();
+  double colorRed = Colors.blue.red.toDouble();
+  double colorBlue = Colors.blue.blue.toDouble();
+  double colorAlpha = Colors.blue.alpha.toDouble();
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +23,7 @@ class QuranPage extends StatelessWidget {
       isInvert: theme.isDarkMode,
       child: SvgPicture.asset(
         pageDir(pageIndex + 1),
+        // colorFilter: ColorFilter.mode(Colors.blue[50]!, BlendMode.modulate),
         width: MediaQuery.of(context).size.width * (isLandScape ? .85 : .95),
         // fit: BoxFit.contain,
       ),

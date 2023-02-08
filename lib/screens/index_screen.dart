@@ -34,7 +34,9 @@ class IndexScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text(AppConstant.surahIndex),
+        title: const Text(
+          AppConstant.surahIndex,
+        ),
         actions: [
           TextButton.icon(
             onPressed: _goToBookMark,
@@ -54,7 +56,10 @@ class IndexScreen extends StatelessWidget {
       body: ListView.separated(
         itemCount: 114,
         separatorBuilder: (context, index) {
-          return HorizentalDiv(color: colorScheme.div);
+          return const Divider(
+            height: 1,
+            thickness: 1.5,
+          );
         },
         itemBuilder: (BuildContext context, int index) {
           final surahNumber = index + 1;
@@ -62,31 +67,32 @@ class IndexScreen extends StatelessWidget {
           return Stack(
             children: [
               ListTile(
+                dense: true,
                 onTap: () {
                   Navigator.of(context).pop();
                   quran.goToPage(page - 1);
                 },
-                visualDensity: const VisualDensity(horizontal: -3),
+                // visualDensity: const VisualDensity(horizontal: -3),
                 leading: SurahNumber(number: surahNumber),
                 title: Text(
                   getSurahNameArabic(surahNumber),
                   style: const TextStyle(
-                    fontFamily: AppTheme.secondaryFontFamily,
-                    fontSize: 25,
+                    // fontFamily: AppTheme.secondaryFontFamily,
+                    fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    height: 1.2,
+                    height: 1,
                   ),
                 ),
                 subtitle: Text(
                   getSurahData(surahNumber),
                   style: const TextStyle(
-                    fontSize: 15,
+                    fontSize: 14,
                   ),
                 ),
                 trailing: Text(
                   '$page',
                   style: TextStyle(
-                    fontSize: 21,
+                    fontSize: 18,
                     color: colorScheme.pageNumber,
                   ),
                 ),

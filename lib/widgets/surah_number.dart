@@ -14,14 +14,22 @@ class SurahNumber extends StatelessWidget {
     return Stack(
       alignment: Alignment.center,
       children: [
-        SvgPicture.asset(AppAsset.surahNumber),
+        SvgPicture.asset(
+          AppAsset.surahNumber,
+          color: Colors.blue,
+          width: 35,
+        ),
         Padding(
           padding: const EdgeInsets.only(top: 3),
           child: Text(
             number.toString(),
             textAlign: TextAlign.center,
-            style: TextStyle(
-              color: colorScheme.surahNumber,
+            style: const TextStyle(
+              height: 1,
+              color: Colors.blue,
+              fontWeight: FontWeight.bold,
+              fontFamily: AppTheme.secondaryFontFamily,
+              // colorScheme.surahNumber,
               fontSize: 17,
             ),
           ),
