@@ -41,7 +41,7 @@ flutter run
 
 There is also a free Figma project for this app.
 
-You can check it out from here: https://www.figma.com/file/1149343417554155555
+You can check it out from here: https://www.figma.com/community/file/1149343417554155555/holy-quran-app-ui-design-free
 
 ## 🔨 Used packages
 
