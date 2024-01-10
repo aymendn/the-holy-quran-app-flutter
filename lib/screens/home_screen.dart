@@ -31,25 +31,24 @@ class HomeScreen extends StatelessWidget {
       child: GestureDetector(
         onTap: overlay.toggleisShowOverlay,
         child: Scaffold(
-          backgroundColor:
-              isLandscape && size.width > 500 ? colorScheme.scaffoldBg : null,
+          // backgroundColor: Colors.blue.withOpacity(.1),
           body: Center(
             child: Stack(
               alignment: Alignment.center,
               children: [
                 Container(
-                  decoration: isLandscape && size.width > 500
-                      ? BoxDecoration(
-                          border: Border.symmetric(
-                            vertical: BorderSide(
-                              color: colorScheme.infoText,
-                              width: 2,
-                            ),
-                          ),
-                          color: colorScheme.scaffold,
-                        )
-                      : null,
-                  constraints: const BoxConstraints(maxWidth: 500),
+                  // decoration: isLandscape && size.width > 500
+                  //     ? BoxDecoration(
+                  //         border: Border.symmetric(
+                  //           vertical: BorderSide(
+                  //             color: colorScheme.infoText,
+                  //             width: 1,
+                  //           ),
+                  //         ),
+                  //         color: colorScheme.scaffold,
+                  //       )
+                  //     : null,
+                  // constraints: const BoxConstraints(maxWidth: 500),
                   child: CarouselSlider.builder(
                     carouselController: quran.carouselController,
                     options: CarouselOptions(
@@ -64,11 +63,19 @@ class HomeScreen extends StatelessWidget {
                     itemCount: quranPages.length,
                     itemBuilder: (_, pageIndex, __) {
                       return isLandscape || isKeyboardOpen
-                          ? ListView(
-                              children: [
-                                const SimplePageInfo(),
-                                QuranPage(pageIndex: pageIndex),
-                              ],
+                          ? SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  const SimplePageInfo(),
+                                  const SizedBox(
+                                    height: 25,
+                                  ),
+                                  QuranPage(pageIndex: pageIndex),
+                                  const SizedBox(
+                                    height: 25,
+                                  )
+                                ],
+                              ),
                             )
                           : Column(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,

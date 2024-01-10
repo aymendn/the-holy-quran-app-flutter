@@ -5,7 +5,6 @@ import 'package:my_quran_app/providers/toast.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'core/index.dart';
 import 'providers/quran.dart';
 import 'providers/show_overlay_provider.dart';

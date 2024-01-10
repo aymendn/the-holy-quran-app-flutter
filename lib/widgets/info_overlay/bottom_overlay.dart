@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:my_quran_app/screens/index_screen.dart';
+import 'package:my_quran_app/screens/juz_index_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../core/index.dart';
@@ -25,29 +27,100 @@ class BottomOverlay extends StatelessWidget {
     final overlay = Provider.of<ShowOverlayProvider>(context, listen: false);
 
     void _goToBookMark() {
-      quran.goToPage(bookMark.markPage);
+      quran.goToPage(bookMark.markPage - 1);
       overlay.toggleisShowOverlay();
     }
 
     return CustomContainer(
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(10),
+          // Padding(
+          //   padding: const EdgeInsets.all(10),
+          //   child: Row(
+          //     children: [
+          //       const Expanded(child: SearchButton()),
+          //       const SizedBox(width: 10),
+          //       CustomButton(
+          //         onPressed: bookMark.changeMark,
+          //         text: bookMark.markButtonText,
+          //         onPrimary: const Color(0xffA9A9A8),
+          //         primary: bookMark.markButtonColor,
+          //         svgIcon: AppAsset.saveFilled,
+          //       )
+          //     ],
+          //   ),
+          // ),
+          // const HorizentalDiv(),
+          SizedBox(
+            height: 45,
             child: Row(
               children: [
-                const Expanded(child: SearchButton()),
-                const SizedBox(width: 10),
-                CustomButton(
-                  onPressed: bookMark.changeMark,
-                  text: bookMark.markButtonText,
-                  onPrimary: const Color(0xffA9A9A8),
-                  primary: bookMark.markButtonColor,
-                  svgIcon: AppAsset.saveFilled,
-                )
+                Expanded(
+                  child: TextButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => IndexScreen(),
+                            fullscreenDialog: true),
+                      );
+                      // Navigator.of(context).pushNamed('/index');
+                    },
+                    icon: SvgPicture.asset(AppAsset.index),
+                    label: const Text(
+                      AppConstant.index,
+                      style: textStyle,
+                    ),
+                  ),
+                ),
+                const VerticalDiv(),
+                Expanded(
+                  child: TextButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => JuzIndexScreen(),
+                            fullscreenDialog: true),
+                      );
+
+                      // Navigator.of(context).pushNamed('/juz-index');
+                    },
+                    icon: SvgPicture.asset(AppAsset.part),
+                    label: const Text(
+                      AppConstant.ajzaa,
+                      style: textStyle,
+                    ),
+                  ),
+                ),
+                // const VerticalDiv(),
+                Expanded(
+                  child: CustomButton(
+                    onPressed: bookMark.changeMark,
+                    text: bookMark.markButtonText,
+                    onPrimary: const Color(0xffA9A9A8),
+                    primary: bookMark.markButtonColor,
+                    svgIcon: AppAsset.saveFilled,
+                  ),
+                  // TextButton.icon(
+                  //   onPressed: () {
+                  //     Navigator.of(context).pushNamed('/douaa');
+                  //   },
+                  //   icon: SvgPicture.asset(AppAsset.hand),
+                  //   label: const FittedBox(
+                  //     child: FittedBox(
+                  //       child: Text(
+                  //         AppConstant.douaa,
+                  //         style: textStyle,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                ),
               ],
             ),
           ),
+
           const HorizentalDiv(),
           SizedBox(
             height: 45,
@@ -89,6 +162,13 @@ class BottomOverlay extends StatelessWidget {
                 ),
                 const VerticalDiv(),
                 IconButton(
+                  icon: SvgPicture.asset(
+                    bookMark.isMarkedPage ? AppAsset.saveFilled : AppAsset.save,
+                  ),
+                  onPressed: bookMark.changeMark,
+                ),
+                const VerticalDiv(),
+                IconButton(
                   icon: Consumer<ThemeProvider>(
                     builder: (context, theme, child) {
                       return SvgPicture.asset(
@@ -98,56 +178,6 @@ class BottomOverlay extends StatelessWidget {
                   onPressed: () {
                     themeListenFalse.toggleTheme(!themeListenFalse.isDarkMode);
                   },
-                ),
-              ],
-            ),
-          ),
-          const HorizentalDiv(),
-          SizedBox(
-            height: 45,
-            child: Row(
-              children: [
-                Expanded(
-                  child: TextButton.icon(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/index');
-                    },
-                    icon: SvgPicture.asset(AppAsset.index),
-                    label: const Text(
-                      AppConstant.index,
-                      style: textStyle,
-                    ),
-                  ),
-                ),
-                const VerticalDiv(),
-                Expanded(
-                  child: TextButton.icon(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/juz-index');
-                    },
-                    icon: SvgPicture.asset(AppAsset.part),
-                    label: const Text(
-                      AppConstant.ajzaa,
-                      style: textStyle,
-                    ),
-                  ),
-                ),
-                const VerticalDiv(),
-                Expanded(
-                  child: TextButton.icon(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/douaa');
-                    },
-                    icon: SvgPicture.asset(AppAsset.hand),
-                    label: const FittedBox(
-                      child: FittedBox(
-                        child: Text(
-                          AppConstant.douaa,
-                          style: textStyle,
-                        ),
-                      ),
-                    ),
-                  ),
                 ),
               ],
             ),

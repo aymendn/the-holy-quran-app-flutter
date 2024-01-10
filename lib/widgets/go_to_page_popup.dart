@@ -38,7 +38,7 @@ class _GoToPagePopupState extends State<GoToPagePopup> {
 
     void _goToPage(String page) {
       if (typedPage(page) != -1) {
-        quran.goToPage(int.parse(page));
+        quran.goToPage(int.parse(page) - 1);
       }
       currentPage = -1;
       Navigator.of(context).pop();

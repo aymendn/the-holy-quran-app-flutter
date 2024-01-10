@@ -9,19 +9,26 @@ class InfoOverlay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isLandscape = MediaQuery.of(context).size.width > 630;
+    final isLandscape =
+        (MediaQuery.of(context).orientation == Orientation.landscape);
 
-    return Column(
-      mainAxisAlignment:
-          isLandscape ? MainAxisAlignment.end : MainAxisAlignment.spaceBetween,
-      children: isLandscape
-          ? [
-              const LandscapeOverlay(),
-            ]
-          : const [
-              TopOverlay(),
-              BottomOverlay(),
-            ],
+    return Padding(
+      padding: EdgeInsets.only(bottom: (isLandscape) ? 10 : 30),
+      child: Column(
+        mainAxisAlignment:
+            // isLandscape ?
+            MainAxisAlignment.end,
+
+        //  : MainAxisAlignment.spaceBetween,
+        children: isLandscape
+            ? [
+                const LandscapeOverlay(),
+              ]
+            : const [
+                // TopOverlay(),
+                BottomOverlay(),
+              ],
+      ),
     );
   }
 }

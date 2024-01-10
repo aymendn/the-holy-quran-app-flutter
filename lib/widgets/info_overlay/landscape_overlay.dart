@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:my_quran_app/providers/bookmark.dart';
 import 'package:my_quran_app/providers/theme_provider.dart';
+import 'package:my_quran_app/screens/index_screen.dart';
 import 'package:my_quran_app/widgets/custom_container.dart';
 import 'package:provider/provider.dart';
 
@@ -36,50 +37,70 @@ class LandscapeOverlay extends StatelessWidget {
     return CustomContainer(
       child: Column(
         children: [
-          Row(
-            children: [
-              InfoText(
-                text: '${AppConstant.page} ${quran.currentPage}',
-                svgIcon: AppAsset.page,
-              ),
-              const SizedBox(width: 5),
-              InfoText(
-                text: '${AppConstant.juz} ${quran.juz}',
-                svgIcon: AppAsset.part,
-              ),
-              const SizedBox(width: 5),
-              InfoText(
-                text: quran.hizbText,
-              ),
-              const SizedBox(width: 5),
-              InfoText(
-                text: quran.surahData,
-                svgIcon: AppAsset.book,
-              ),
-              const Spacer(),
-              IconButton(
-                icon: SvgPicture.asset(
-                  bookMark.isMarkedPage ? AppAsset.saveFilled : AppAsset.save,
-                ),
-                onPressed: bookMark.changeMark,
-              ),
-              IconButton(
-                icon: SvgPicture.asset(AppAsset.search),
-                onPressed: () {
-                  Navigator.pushNamed(context, '/search');
-                },
-              ),
-              IconButton(
-                icon: SvgPicture.asset(AppAsset.moon),
-                onPressed: () => theme.toggleTheme(!theme.isDarkMode),
-              ),
-            ],
-          ),
-          const HorizentalDiv(),
+          // Row(
+          //   children: [
+          //     InfoText(
+          //       text: '${AppConstant.page} ${quran.currentPage}',
+          //       svgIcon: AppAsset.page,
+          //     ),
+          //     const SizedBox(width: 5),
+          //     InfoText(
+          //       text: '${AppConstant.juz} ${quran.juz}',
+          //       svgIcon: AppAsset.part,
+          //     ),
+          //     const SizedBox(width: 5),
+          //     InfoText(
+          //       text: quran.hizbText,
+          //     ),
+          //     const SizedBox(width: 5),
+          //     InfoText(
+          //       text: quran.surahData,
+          //       svgIcon: AppAsset.book,
+          //     ),
+          //     const Spacer(),
+          //     IconButton(
+          //       icon: SvgPicture.asset(
+          //         bookMark.isMarkedPage ? AppAsset.saveFilled : AppAsset.save,
+          //       ),
+          //       onPressed: bookMark.changeMark,
+          //     ),
+          //     // IconButton(
+          //     //   icon: SvgPicture.asset(AppAsset.search),
+          //     //   onPressed: () {
+          //     //     Navigator.pushNamed(context, '/search');
+          //     //   },
+          //     // ),
+          //     IconButton(
+          //       icon: SvgPicture.asset(AppAsset.moon),
+          //       onPressed: () => theme.toggleTheme(!theme.isDarkMode),
+          //     ),
+          //   ],
+          // ),
+          // const HorizentalDiv(),
           SizedBox(
             height: 45,
             child: Row(
               children: [
+                Expanded(
+                  flex: 2,
+                  child: TextButton.icon(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => IndexScreen(),
+                            fullscreenDialog: true),
+                      );
+                      // Navigator.of(context).pushNamed('/index');
+                    },
+                    icon: SvgPicture.asset(AppAsset.index),
+                    label: const Text(
+                      AppConstant.index,
+                      style: textStyle,
+                    ),
+                  ),
+                ),
+                const VerticalDiv(),
                 Expanded(
                   flex: 3,
                   child: TextButton.icon(
@@ -112,20 +133,7 @@ class LandscapeOverlay extends StatelessWidget {
                     ),
                   ),
                 ),
-                const VerticalDiv(),
-                Expanded(
-                  flex: 2,
-                  child: TextButton.icon(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/index');
-                    },
-                    icon: SvgPicture.asset(AppAsset.index),
-                    label: const Text(
-                      AppConstant.index,
-                      style: textStyle,
-                    ),
-                  ),
-                ),
+
                 const VerticalDiv(),
                 Expanded(
                   flex: 2,
@@ -141,23 +149,34 @@ class LandscapeOverlay extends StatelessWidget {
                   ),
                 ),
                 const VerticalDiv(),
-                Expanded(
-                  flex: 2,
-                  child: TextButton.icon(
-                    onPressed: () {
-                      Navigator.of(context).pushNamed('/douaa');
-                    },
-                    icon: SvgPicture.asset(AppAsset.hand),
-                    label: const FittedBox(
-                      child: FittedBox(
-                        child: Text(
-                          AppConstant.douaa,
-                          style: textStyle,
-                        ),
-                      ),
-                    ),
+                IconButton(
+                  icon: SvgPicture.asset(
+                    bookMark.isMarkedPage ? AppAsset.saveFilled : AppAsset.save,
                   ),
+                  onPressed: bookMark.changeMark,
                 ),
+                const VerticalDiv(),
+                IconButton(
+                  icon: SvgPicture.asset(AppAsset.moon),
+                  onPressed: () => theme.toggleTheme(!theme.isDarkMode),
+                ),
+                // Expanded(
+                //   flex: 2,
+                //   child: TextButton.icon(
+                //     onPressed: () {
+                //       Navigator.of(context).pushNamed('/douaa');
+                //     },
+                //     icon: SvgPicture.asset(AppAsset.hand),
+                //     label: const FittedBox(
+                //       child: FittedBox(
+                //         child: Text(
+                //           AppConstant.douaa,
+                //           style: textStyle,
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // ),
               ],
             ),
           ),

@@ -25,19 +25,23 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final textStyle = TextStyle(
       color: onPrimary,
+      height: 1.5,
       fontSize: 15,
     );
     return GestureDetector(
       onTap: onPressed,
       child: Container(
         height: 40,
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+        margin: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(borderRadius),
           color: primary,
           border: isFilled ? null : Border.all(width: 2, color: onPrimary),
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             if (svgIcon != null) ...[
               SvgPicture.asset(svgIcon!),
